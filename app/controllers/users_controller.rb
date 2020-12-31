@@ -10,6 +10,13 @@ class UsersController < ApplicationController
         render :json => @user.as_json(except: [:password_digest]), :status => :ok
     end
 
+    def edit
+    end
+
+    def delete 
+    end
+
+
     private 
 
     def users_params
