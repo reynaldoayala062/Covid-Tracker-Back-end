@@ -23,4 +23,6 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
-  adaptor: "postresql"
+
+  adapter: postgresql
+
