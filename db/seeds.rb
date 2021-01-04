@@ -8,3 +8,11 @@
 
 
 User.create(first_name: 'Joe', last_name: 'Gomez', email: 'abe@gmail.com', address: '321 abc St', password: 'qwe')
+
+FavoriteList.create(name: "free testing sites", detail: "free testing sites around 77082", user_id: 1)
+
+Location.create(name: 'free testing location', address: '123 abc st', zipcode: 12345, detail: 'free testing')
+
+Comment.create(title: "test", detail: "testing went fast and smooth", star_rating: 4, user_id: 1, location_id: 1)
+
+ListLocation.create(favorite_list_id: 1, location_id: 1)
