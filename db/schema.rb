@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_165401) do
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
-    t.string "details"
+    t.string "detail"
     t.integer "star_rating"
     t.integer "user_id"
     t.integer "location_id"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_165401) do
     t.string "name"
     t.string "address"
     t.integer "zipcode"
-    t.string "details"
+    t.string "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
