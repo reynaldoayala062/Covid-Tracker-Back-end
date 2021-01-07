@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authenticate!, only: [:show, :edit, :delete]
 
     # def index 
     #     @users = User.all 
@@ -12,7 +13,10 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.create(users_params)
-        render :json => @user.as_json(except: [:password_digest]), :status => :ok
+        payload = { user_id: @user.id }
+        token = JWT.encode(payload,ENV['CRYPT'], 'HS256')
+        render :json => { :auth_key => token }, :status => :ok
+        # render :json => @user.as_json(except: [:password_digest]), :status => :ok
     end
 
     def edit
