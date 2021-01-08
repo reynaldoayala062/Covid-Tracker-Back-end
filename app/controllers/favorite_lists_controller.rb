@@ -1,4 +1,6 @@
 class FavoriteListsController < ApplicationController
+    before_action :authenticate!
+
 
     def index
         @favLists = FavoriteList.all

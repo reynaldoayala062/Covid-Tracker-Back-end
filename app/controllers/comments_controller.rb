@@ -11,19 +11,31 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(comment_params)
-        render json: @comment, only: [:id, :title, :detail, :star_rating], include: [:user, :location]
+        if current_user
+            @comment = Comment.create(comment_params)
+            render json: @comment, only: [:id, :title, :detail, :star_rating], include: [:user, :location]
+        else
+            render json: => { msg: => 'Need to login before doing that' }
+        end
     end 
 
     def update
-        @comment = Comment.find(params[:id])
-        @comment.update(comment_params)
-        render json: @comment, only: [:id, :title, :detail, :star_rating], include: [:user, :location]
+        if current_user
+            @comment = Comment.find(params[:id])
+            @comment.update(comment_params)
+            render json: @comment, only: [:id, :title, :detail, :star_rating], include: [:user, :location]
+        else
+            render json: => { msg: => 'Need to login before doing that' }
+        end
     end 
 
     def destroy
-        @comment = Comment.find(params[:id])
-        @comment.destroy
+        if current_user
+            @comment = Comment.find(params[:id])
+            @comment.destroy
+        else
+            render json: { msg: => 'Are you sure this is your comment?'}
+        end
     end 
     
     private
